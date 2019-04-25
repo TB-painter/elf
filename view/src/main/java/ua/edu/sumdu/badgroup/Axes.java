@@ -21,19 +21,20 @@ public class Axes extends Pane {
         xAxis = new NumberAxis(xLow, xHi, xTickUnit);
         xAxis.setSide(Side.BOTTOM);
 
-        xAxis.setMaxWidth(width-40);
+        xAxis.setMaxWidth(width);
 
         xAxis.setMinorTickVisible(false);
-        xAxis.setPrefWidth(width-20);
-        xAxis.setLayoutY(height-20);
-        xAxis.setLayoutX(20);
+        xAxis.setPrefWidth(width);
+        xAxis.setLayoutY(height);
+
+        xAxis.setLayoutX(21);
 
         yAxis = new NumberAxis(yLow, yHi, yTickUnit);
-        yAxis.setMaxHeight(height-40);
+       // yAxis.setMaxHeight(height-40);
         yAxis.setSide(Side.LEFT);
         yAxis.setMinorTickVisible(false);
         yAxis.setPrefHeight(height);
-        yAxis.setLayoutY(20);
+        yAxis.setLayoutY(0);
 
 
         getChildren().setAll(xAxis, yAxis);

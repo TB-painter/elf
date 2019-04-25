@@ -46,6 +46,10 @@ public class Point {
         return res;
     }
 
+    public double getRes() {
+        return res;
+    }
+
     public void setRes(double res) {
         this.res = res;
     }

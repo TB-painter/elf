@@ -6,16 +6,16 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.Rectangle;
-import ua.edu.sumdu.badgroup.math.Formula;
+import ua.edu.sumdu.badgroup.job.GettingApproximatedFormula;
 import ua.edu.sumdu.badgroup.math.Formulas;
 
-import java.util.function.Function;
+
 
 public class Plot extends Pane {
     public Plot(
-            Formulas formulas, Formula constants,
+            Formulas formulas,
             double xMin, double xMax, double xInc,
-            Axes axes
+            Axes axes, App app
     ) {
         Path path = new Path();
         path.setStroke(Color.ORANGE.deriveColor(0, 1, 1, 0.6));
@@ -30,7 +30,7 @@ public class Plot extends Pane {
         );
 
         double x = xMin;
-        double y = apply(x, formulas, constants);
+        double y = apply(x, formulas, app);
 
         path.getElements().add(
                 new MoveTo(
@@ -40,7 +40,7 @@ public class Plot extends Pane {
 
         x += xInc;
         while (x < xMax) {
-            y = apply(x, formulas, constants);
+            y = apply(x, formulas, app);
 
             path.getElements().add(
                     new LineTo(
@@ -60,37 +60,23 @@ public class Plot extends Pane {
 
     private double mapX(double x, Axes axes) {
         double tx = 20;
-        double sx = axes.getPrefWidth() /
+        double sx = (axes.getPrefWidth() /
                 (axes.getXAxis().getUpperBound() -
-                        axes.getXAxis().getLowerBound());
+                        axes.getXAxis().getLowerBound()));
 
         return x * sx + tx;
     }
 
     private double mapY(double y, Axes axes) {
-        double ty = axes.getPrefHeight()-15;
-        double sy = axes.getPrefHeight() /
+        double ty = axes.getPrefHeight();
+        double sy = (axes.getPrefHeight() /
                 (axes.getYAxis().getUpperBound() -
-                        axes.getYAxis().getLowerBound());
+                        axes.getYAxis().getLowerBound()));
 
         return -y * sy + ty;
     }
 
-    public double apply (double x, Formulas formulas, Formula constants) {
-        double result;
-        switch (formulas) {
-            case LINEAR: result = constants.getFreeCoef() + constants.getArgCoef()*x;
-            case LOGARITHMIC: result = constants.getFreeCoef() + constants.getArgCoef()* Math.log(x);
-            case INVERSE: result = constants.getFreeCoef() + constants.getArgCoef()/x;
-            case EXPONENTIAL: result = constants.getFreeCoef()* Math.pow(constants.getFreeCoef(), x);
-            case POWER: result = constants.getFreeCoef()* Math.pow(x, constants.getFreeCoef());
-            case INVERSE_EXPONENTIAL: result = Math.exp(constants.getFreeCoef() + constants.getArgCoef()/x);
-            case INVERSE_SUM: result = 1 / (constants.getFreeCoef() + constants.getArgCoef()*x);
-            case INVERSE_LOG_SUM: result = 1 / (constants.getFreeCoef() + constants.getArgCoef()* Math.log(x));
-            case INVERSE_SUM_X: result = x / (constants.getFreeCoef() + constants.getArgCoef()*x);
-            default:
-                result = result = constants.getFreeCoef() + constants.getArgCoef()*x;
-        }
-        return result;
+    public double apply (double x, Formulas formulas, App app) {
+        return new GettingApproximatedFormula(formulas, app.getDataPoints()).execute().count(x);
     }
 }

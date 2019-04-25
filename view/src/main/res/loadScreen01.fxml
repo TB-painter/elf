@@ -12,35 +12,30 @@
   <items>
     <AnchorPane fx:id="paneLeft" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: rgb(35, 39, 50);" SplitPane.resizableWithParent="false">
          <children>
-            <TableView fx:id="tableViewPoints" editable="true" layoutX="41.0" layoutY="87.0" prefHeight="278.0" prefWidth="637.0" style="-fx-background-color: rgb(62, 116, 183);" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="87.0">
+            <TableView fx:id="tableViewPoints" editable="true" layoutX="41.0" layoutY="87.0" prefHeight="278.0" prefWidth="637.0" style="-fx-background-color: rgb(104, 104, 104);" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="87.0">
               <columns>
                 <TableColumn fx:id="pointX" prefWidth="104.0" text="X" />
                 <TableColumn fx:id="pointY" prefWidth="120.0" resizable="false" text="Y" />
               </columns>
             </TableView>
-            <Button fx:id="savePoints" layoutX="20.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: rgb(62, 116, 183);" text="Save points" textFill="WHITE" AnchorPane.leftAnchor="20.0">
+            <Button fx:id="savePoints" layoutX="20.0" layoutY="390.0" mnemonicParsing="false" onAction="#pressSave" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: rgb(104, 104, 104);" text="Save points" textFill="WHITE" AnchorPane.leftAnchor="20.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="openPoints" layoutX="20.0" layoutY="428.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: rgb(62, 116, 183);" text="Open set" textFill="WHITE" AnchorPane.leftAnchor="20.0">
+            <Button fx:id="openPoints" layoutX="20.0" layoutY="428.0" mnemonicParsing="false" onAction="#pressOpen" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: rgb(104, 104, 104);" text="Open set" textFill="WHITE" AnchorPane.leftAnchor="20.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnBack" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: rgb(62, 116, 183);" text="Back" textFill="WHITE">
+            <Button fx:id="btnBack" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#pressBack" prefHeight="25.0" prefWidth="43.0" style="-fx-background-color: rgb(104, 104, 104);" text="Back" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnAdd" layoutX="641.0" layoutY="11.0" mnemonicParsing="false" onAction="#addSpace" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: rgb(62, 116, 183);" text="+" textFill="#1aff00" AnchorPane.rightAnchor="22.0">
+            <Button fx:id="btnAdd" layoutX="641.0" layoutY="11.0" mnemonicParsing="false" onAction="#addSpace" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: rgb(104, 104, 104);" text="+" textFill="WHITE" AnchorPane.rightAnchor="22.0">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnDelete" layoutX="594.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: rgb(62, 116, 183);" text="X" textFill="RED" AnchorPane.rightAnchor="69.0">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnPlot" layoutX="594.0" layoutY="388.0" mnemonicParsing="false" onAction="#pressPlot" prefHeight="74.0" prefWidth="85.0" style="-fx-background-color: rgb(62, 116, 183);" text="PLOT" textFill="WHITE" AnchorPane.rightAnchor="19.0">
+            <Button fx:id="btnPlot" layoutX="594.0" layoutY="388.0" mnemonicParsing="false" onAction="#pressPlot" prefHeight="74.0" prefWidth="85.0" style="-fx-background-color: rgb(104, 104, 104);" text="PLOT" textFill="WHITE" AnchorPane.rightAnchor="19.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
